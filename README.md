@@ -1,3 +1,4 @@
 # ContextMenuBuilder
 
-A description of this package.
+A package to make creating `NSMenu` context menus easier.
+
