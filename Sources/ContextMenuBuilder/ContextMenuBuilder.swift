@@ -51,11 +51,33 @@ public struct ButtonMenuBuilder: ContextMenuBuilder {
         self.action = action
     }
     
+    @available(macOS 10.15, *)
+    public init(title: String, image: NSImage? = nil, action: @escaping () async -> Void) {
+        self.title = title
+        self.image = image
+        self.action = {
+            Task {
+                await action()
+            }
+        }
+    }
+    
     @available(macOS 11.0, *)
     public init(title: String, systemImage: String, action: (() -> Void)?) {
         self.title = title
         self.image = NSImage(systemSymbolName: systemImage, accessibilityDescription: nil)
         self.action = action
+    }
+    
+    @available(macOS 11.0, *)
+    public init(title: String, systemImage: String, action: @escaping () async -> Void) {
+        self.title = title
+        self.image = NSImage(systemSymbolName: systemImage, accessibilityDescription: nil)
+        self.action = {
+            Task {
+                await action()
+            }
+        }
     }
     
     public var menuItem: NSMenuItem {
