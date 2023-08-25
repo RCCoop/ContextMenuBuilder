@@ -12,6 +12,6 @@ The protocol requirement is just that conforming instances produce a `NSMenuItem
 
 # `NSMenu` initializer
 
-A convenience initializer for `NSMenu` takes an array of `ContextMenuBuilder` and populates the `NSMenu` with the builders' `NSMenuItem`s.
+A convenience initializer for `NSMenu` takes an array of `ContextMenuBuilder` and populates the `NSMenu` with the builders' `NSMenuItem`s. If the array of `ContextMenuBuilder` is empty, the initializer returns `nil`.
 
 That's all!
